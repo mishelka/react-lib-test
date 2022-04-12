@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import {commentService} from "../../../_api";
 
 export interface CommentType {
-  ident: number,
+  ident?: number,
   comment: string,
   game: string,
   commentedAt: number,
