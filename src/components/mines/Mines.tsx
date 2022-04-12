@@ -8,7 +8,7 @@ import Services from "./services/Services";
 const Mines = () => {
   const [field, setField] = useState<FieldType>(fieldInitial);
   const [error, setError] = useState(null);
-  const [showAlert, setShowAlert] = useState(false); //!!!
+  const [showAlert, setShowAlert] = useState(false);
 
   useEffect(() => {
     fetchBoard();
