@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.2",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -33,7 +33,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "mylib",
+  "name": "test-minesweeper-lib",
   "author": "Michaela Bacikova",
   "repository": {
     "type": "git",
@@ -41,23 +41,32 @@
   },
   "homepage": "https://github.com/mishelka/react-lib-test",
   "keywords": [
-    "react", "game", "gamestudio", "kpi", "tuke", "component programming"
+    "react",
+    "game",
+    "gamestudio",
+    "kpi",
+    "tuke",
+    "component programming"
   ],
-  "module": "dist/mylib.esm.js",
+  "module": "dist/test-minesweeper-lib.esm.js",
   "size-limit": [
     {
-      "path": "dist/mylib.cjs.production.min.js",
+      "path": "dist/test-minesweeper-lib.cjs.production.min.js",
       "limit": "10 KB"
     },
     {
-      "path": "dist/mylib.esm.js",
+      "path": "dist/test-minesweeper-lib.esm.js",
       "limit": "10 KB"
     }
   ],
+  "compilerOptions": {
+    "baseUrl": "src"
+  },
   "devDependencies": {
     "@size-limit/preset-small-lib": "^7.0.8",
     "@types/react": "^18.0.1",
     "@types/react-dom": "^18.0.0",
+    "babel-plugin-css-modules-transform": "^1.6.2",
     "husky": "^7.0.4",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -65,5 +74,11 @@
     "tsdx": "^0.14.1",
     "tslib": "^2.3.1",
     "typescript": "^4.6.3"
+  },
+  "dependencies": {
+    "axios": "^0.26.1",
+    "react-bootstrap": "^2.2.3",
+    "react-hook-form": "^7.29.0",
+    "react-router-dom": "^6.3.0"
   }
 }
