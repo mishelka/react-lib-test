@@ -78,7 +78,7 @@ const CommentsTable = ({comments} : CommentsPropTypes) => {
         )) }
         </tbody>
       </Table>
-      <Link className="btn btn-primary" style={{margin: "0.5rem"}} to="/mines">Add Comment</Link>
+      <Link className="btn btn-primary" style={{margin: "0.5rem"}} to="addComment">Add Comment</Link>
     </div>
   );
 };
