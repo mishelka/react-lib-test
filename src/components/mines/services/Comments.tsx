@@ -28,9 +28,9 @@ type FormData = {
   comment: string;
 }
 const formDataValidation = {
-  required: {value: true, message: "Please write a comment message."},
-  minLength: {value: 10, message: "You need to write at least 10 characters."},
-  maxLength: {value: 50, message: "Maximum is 50 characters."}
+  required: "Please write a comment message.",
+  minLength: {value: 10, message: "Please write at least 10 characters."},
+  maxLength: {value: 250, message: "Maximum is 250 characters."}
 }
 const AddComment = () => {
   const {register, handleSubmit, formState: { errors, isValid }} = useForm<FormData>();
@@ -45,11 +45,12 @@ const AddComment = () => {
     <div className="container">
       <h1>Add Comment</h1>
       <form onSubmit={handleSubmit((data: any) => onSubmit(data))}>
-        <label htmlFor="comment">Comment message:</label>
-        <textarea {...register("comment", formDataValidation)}
-                  placeholder="Please write your comment here" />
-        {/*<p>{data.message}</p>*/}
-        <div><small style={{color: "red"}}>{errors && true}</small></div>
+        <div style={{display: "flex", flexDirection: "column"}}>
+          <label htmlFor="comment">Comment message:</label>
+          <textarea {...register("comment", formDataValidation)}
+                    placeholder="Please write your comment here" />
+        </div>
+        <div><small style={{color: "red"}}>{errors?.comment?.message}</small></div>
         <button type="submit">Send</button>
       </form>
     </div>
