@@ -1,6 +1,6 @@
 import React from 'react';
 import Table from "react-bootstrap/Table";
-import {Route, Link} from "react-router-dom";
+import {Routes, Route, Link} from "react-router-dom";
 import {GAME_ID} from "../../../_api/constants";
 import { useForm } from 'react-hook-form';
 
@@ -17,8 +17,10 @@ export interface CommentsPropTypes {
 
 const Comments = ({comments} : CommentsPropTypes) => (
   <React.Fragment>
-    <Route path={`/${GAME_ID}/add`} element={<AddComment/>}/>
-    <Route path={`/${GAME_ID}`} element={<CommentsTable comments={comments}/>}/>
+    <Routes>
+      <Route path={`/${GAME_ID}/add`} element={<AddComment/>}/>
+      <Route path={`/${GAME_ID}`} element={<CommentsTable comments={comments}/>}/>
+    </Routes>
   </React.Fragment>
 );
 
