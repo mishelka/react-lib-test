@@ -12,11 +12,12 @@ const Mines = () => {
 
   useEffect(() => {
     fetchBoard();
+    setShowAlert(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    if(field && field.gameState !== 'PLAYING') {
+    if(field?.gameState && ('PLAYING'.localeCompare(field.gameState) === 0)) {
       setShowAlert(true);
       //add score;
     }

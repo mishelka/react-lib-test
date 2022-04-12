@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 export interface CommentType {
   ident: number,
   comment: string,
+  game: string,
   commentedAt: number,
   player: string,
 }
@@ -18,8 +19,8 @@ export interface CommentsPropTypes {
 const Comments = ({comments} : CommentsPropTypes) => (
   <React.Fragment>
     <Routes>
-      <Route path={`/${GAME_ID}/add`} element={<AddComment/>}/>
-      <Route path={`/${GAME_ID}`} element={<CommentsTable comments={comments}/>}/>
+      <Route path={`${GAME_ID}/add`} element={<AddComment/>}/>
+      <Route path={`${GAME_ID}`} element={<CommentsTable comments={comments}/>}/>
     </Routes>
   </React.Fragment>
 );

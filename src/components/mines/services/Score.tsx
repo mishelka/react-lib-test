@@ -4,6 +4,7 @@ import Table from 'react-bootstrap/Table';
 export interface ScoreType {
   ident: number,
   points: number,
+  game: string,
   playedAt: number,
   player: string,
 }
