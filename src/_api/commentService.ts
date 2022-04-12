@@ -11,7 +11,7 @@ const addComment = (comment: string) => {
     commentedAt: new Date().getMilliseconds(),
     player: "anonymous",
   }
-  return axios.post(`${COMMENTS_URL}/${GAME_ID}`, {comment: commentData});
+  return axios.post(`${COMMENTS_URL}`, {comment: commentData});
 }
 
 const commentService = { fetchComments, addComment };
