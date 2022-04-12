@@ -1,7 +1,8 @@
 import React from 'react';
 import Table from "react-bootstrap/Table";
-import {Routes, Route, Link} from "react-router-dom";
+import {Routes, Route, Link, useNavigate} from "react-router-dom";
 import { useForm } from 'react-hook-form';
+import {commentService} from "../../../_api";
 
 export interface CommentType {
   ident: number,
@@ -32,13 +33,16 @@ const formDataValidation = {
   minLength: {value: 10, message: "Please write at least 10 characters."},
   maxLength: {value: 250, message: "Maximum is 250 characters."}
 }
+
 const AddComment = () => {
   const {register, handleSubmit, formState: { errors, isValid }} = useForm<FormData>();
+  const navigate = useNavigate();
+
   const onSubmit = async (data: any) => {
-    console.log(data);
-    console.log(isValid);
-    console.log(errors);
-    // await commentService.addComment(data);
+    if(isValid) {
+      await commentService.addComment(data.comment);
+      navigate("");
+    }
   };
 
   return (
