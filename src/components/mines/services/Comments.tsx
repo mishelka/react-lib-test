@@ -56,7 +56,7 @@ const AddComment = () => {
         </div>
         <div><small style={{color: "red"}}>{errors?.comment?.message}</small></div>
         <div className="button-container">
-          <Link to="" className="button">Back</Link>
+          <Link to="/" className="button">Back</Link>
           <button type="submit">Send</button>
         </div>
       </form>

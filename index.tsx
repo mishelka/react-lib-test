@@ -1,1 +1,1 @@
-export {default as Minesweeper} from './src/components/mines';
+export {default as Mines} from './src/components/mines';
