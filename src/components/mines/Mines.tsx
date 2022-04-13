@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Button} from "react-bootstrap";
-import {minesService, scoreService} from "../../_api";
+import {minesService, scoreService, commentService} from "../../_api";
 import Field, {fieldInitial, FieldType} from "./Field";
 import GameStateAlert from "./GameStateAlert";
 import Services from "./services/Services";
@@ -9,9 +9,14 @@ const Mines = () => {
   const [field, setField] = useState<FieldType>(fieldInitial);
   const [error, setError] = useState(null);
   const [showAlert, setShowAlert] = useState(false);
+  const [scores, setScores] = useState([]);
+  const [comments, setComments] = useState([]);
+  const [scoreError, setScoreError] = useState(null);
+  const [commentsError, setCommentsError] = useState(null);
 
   useEffect(() => {
     fetchBoard();
+    fetchServices();
     setShowAlert(false);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -23,6 +28,15 @@ const Mines = () => {
       .then(data => {
         setField(data.data);
       })
+  };
+
+  const fetchServices = () => {
+    scoreService.fetchScores().then(
+      response => setScores(response.data),
+      error => { setScoreError(error?.message); setScores([]); });
+    commentService.fetchComments().then(
+      response => setComments(response.data),
+      error => { setCommentsError(error?.message); setComments([]); });
   };
 
   const handleNewGame = () => {
@@ -87,13 +101,20 @@ const Mines = () => {
           <Button variant="outline-success" onClick={() => handleNewGame()}>New Game</Button>
         </div>
 
-        <Services/>
+        <Services scores={scores}
+                  comments={comments}
+                  scoreError={scoreError}
+                  commentsError={commentsError}
+                  onAddComment={() => fetchServices()}/>
 
         { showAlert &&
         <div className="game-state-alert">
           <GameStateAlert show={showAlert}
                           gameState={field?.gameState}
-                          onClose={() => setShowAlert(false)}/>
+                          onClose={() => {
+                            setShowAlert(false);
+                            fetchServices();
+                          }}/>
         </div>
         }
       </div>

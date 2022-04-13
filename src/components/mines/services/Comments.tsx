@@ -14,13 +14,14 @@ export interface CommentType {
 
 export interface CommentsPropTypes {
   comments: CommentType[],
+  onAddComment: () => void,
 }
 
-const Comments = ({comments} : CommentsPropTypes) => (
+const Comments = ({comments, onAddComment} : CommentsPropTypes) => (
   <React.Fragment>
     <Routes>
-      <Route path={`addComment`} element={<AddComment/>}/>
       <Route index element={<CommentsTable comments={comments}/>}/>
+      <Route path={`addComment`} element={<AddComment onAddComment={onAddComment}/>}/>
     </Routes>
   </React.Fragment>
 );
@@ -34,14 +35,19 @@ const formDataValidation = {
   maxLength: {value: 250, message: "Maximum is 250 characters."}
 }
 
-const AddComment = () => {
+export interface AddCommentPropTypes {
+  onAddComment: () => void,
+}
+
+const AddComment = ({onAddComment} : AddCommentPropTypes) => {
   const {register, handleSubmit, formState: { errors, isValid }} = useForm<FormData>();
   const navigate = useNavigate();
 
   const onSubmit = async (data: any) => {
     if(isValid) {
       await commentService.addComment(data.comment);
-      navigate("");
+      onAddComment();
+      navigate(-1);
     }
   };
 
@@ -56,7 +62,7 @@ const AddComment = () => {
         </div>
         <div><small style={{color: "red"}}>{errors?.comment?.message}</small></div>
         <div className="button-container">
-          <Link to="/" className="button">Back</Link>
+          <button className="button" onClick={() => navigate(-1)}>Back</button>
           <button type="submit">Send</button>
         </div>
       </form>
@@ -64,7 +70,10 @@ const AddComment = () => {
   );
 };
 
-const CommentsTable = ({comments} : CommentsPropTypes) => {
+export interface CommentsTablePropTypes {
+  comments: CommentType[],
+}
+const CommentsTable = ({comments} : CommentsTablePropTypes) => {
   return (
     <div className="container">
       <h1>Comments</h1>

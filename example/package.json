@@ -15,9 +15,7 @@
     "react-router-dom": "^6.3.0"
   },
   "alias": {
-    "react": "../node_modules/react",
-    "react-dom": "../node_modules/react-dom/profiling",
-    "scheduler/tracing": "../node_modules/scheduler/tracing-profiling"
+    "process": false
   },
   "devDependencies": {
     "@types/react": "^16.9.11",
@@ -25,8 +23,5 @@
     "parcel": "^2.0.1",
     "process": "^0.11.10",
     "typescript": "^3.4.5"
-  },
-  "alias": {
-    "process": false
   }
 }
