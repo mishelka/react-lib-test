@@ -9,6 +9,7 @@ const Mines = () => {
   const [field, setField] = useState<FieldType>(fieldInitial);
   const [error, setError] = useState(null);
   const [showAlert, setShowAlert] = useState(false);
+  const [scoreSent, setScoreSent] = useState(true);
   const [scores, setScores] = useState([]);
   const [comments, setComments] = useState([]);
   const [scoreError, setScoreError] = useState(null);
@@ -44,6 +45,7 @@ const Mines = () => {
       .newGame(10, 10, 3)
       .then(data => {
         setField(data.data);
+        setScoreSent(false);
       }, error => {
         setError(error);
       });
@@ -51,9 +53,9 @@ const Mines = () => {
 
   const actualizeStates = (fieldData: FieldType) => {
     setField(fieldData);
-    if(field?.gameState && ('PLAYING'.localeCompare(field.gameState) === 0)) {
+    if(!scoreSent && field?.gameState && ('PLAYING'.localeCompare(field.gameState) === 0)) {
       setShowAlert(true);
-      scoreService.addScore(field.score);
+      scoreService.addScore(field.score).then(() => setScoreSent(true));
     }
   }
 

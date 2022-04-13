@@ -11,7 +11,7 @@ const addScore = (points: number) => {
     playedAt: formatDate(new Date()),
     player: "anonymous",
   };
-  axios.post(`${SCORE_URL}`, score);
+  return axios.post(`${SCORE_URL}`, score);
 };
 
 const scoreService = { fetchScores: fetchScore, addScore };
