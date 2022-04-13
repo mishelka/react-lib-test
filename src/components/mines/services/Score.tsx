@@ -2,10 +2,10 @@ import React from 'react';
 import Table from 'react-bootstrap/Table';
 
 export interface ScoreType {
-  ident: number,
+  ident?: number,
   points: number,
   game: string,
-  playedAt: number,
+  playedAt: string,
   player: string,
 }
 

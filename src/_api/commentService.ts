@@ -4,11 +4,10 @@ import {CommentType} from "../components/mines/services/Comments";
 
 const fetchComments = () => axios.get(`${COMMENTS_URL}/${GAME_ID}`);
 const addComment = (comment: string) => {
-
   const commentData: CommentType = {
     comment,
     game: "mines",
-    commentedAt: new Date().getMilliseconds(),
+    commentedAt: new Date().toISOString(),
     player: "anonymous",
   }
   return axios.post(`${COMMENTS_URL}`, {comment: commentData});

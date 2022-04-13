@@ -2,6 +2,13 @@
   position: relative;
 }
 
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
 .gameStateAlert {
   position: absolute;
   width: 100%;

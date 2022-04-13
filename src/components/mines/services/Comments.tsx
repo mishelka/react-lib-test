@@ -8,7 +8,7 @@ export interface CommentType {
   ident?: number,
   comment: string,
   game: string,
-  commentedAt: number,
+  commentedAt: string,
   player: string,
 }
 
@@ -55,7 +55,10 @@ const AddComment = () => {
                     placeholder="Please write your comment here" />
         </div>
         <div><small style={{color: "red"}}>{errors?.comment?.message}</small></div>
-        <button type="submit">Send</button>
+        <div className="button-container">
+          <Link to="" className="button">Back</Link>
+          <button type="submit">Send</button>
+        </div>
       </form>
     </div>
   );
