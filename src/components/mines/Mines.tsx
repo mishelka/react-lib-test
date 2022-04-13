@@ -65,9 +65,12 @@ const Mines = () => {
         <h1>Minesweeper</h1>
 
         <div className="game-container">
+          { !error && field?.score >= 0 &&
+            <h4>Score: {field.score}</h4>
+          }
           { !error && field?.tiles &&
-          <Field tiles={field.tiles}
-                 handleClick={handleTileClicked}/>
+            <Field tiles={field.tiles}
+                   handleClick={handleTileClicked}/>
           }
           {error && <h2>"Sorry, we could not load your game :("</h2>}
         </div>

@@ -6,6 +6,7 @@ export interface FieldType {
   columnCount: number,
   mineCount: number,
   gameState: string | null,
+  score: number,
   tiles: TileType[][] | null,
 }
 
@@ -13,6 +14,7 @@ export const fieldInitial: FieldType = {
   rowCount: 0,
   columnCount: 0,
   mineCount: 0,
+  score: -1,
   gameState: null,
   tiles: null,
 }
