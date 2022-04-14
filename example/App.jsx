@@ -8,7 +8,7 @@ const App = () => {
       <div style={{display: "flex", flexDirection: "row"}}>
         <div className="container main-container">
           <Routes>
-            <Route path={"/mines"} element={<Mines/>}/>
+            <Route path={"/mines/*"} element={<Mines/>}/>
           </Routes>
         </div>
       </div>

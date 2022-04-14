@@ -43,11 +43,12 @@ const AddComment = ({onAddComment} : AddCommentPropTypes) => {
   const {register, handleSubmit, formState: { errors, isValid }} = useForm<FormData>();
   const navigate = useNavigate();
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = (data: any) => {
     if(isValid) {
-      await commentService.addComment(data.comment);
-      onAddComment();
-      navigate(-1);
+      commentService.addComment(data.comment).then(() => {
+        onAddComment();
+        navigate(-1);
+      });
     }
   };
 

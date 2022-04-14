@@ -1,5 +1,5 @@
 {
-  "version": "0.4.7",
+  "version": "0.4.8",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -21,6 +21,7 @@
   },
   "peerDependencies": {
     "react": ">=16",
+    "react-dom": ">=16",
     "react-router-dom": ">=6"
   },
   "husky": {

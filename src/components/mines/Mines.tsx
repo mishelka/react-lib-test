@@ -4,6 +4,7 @@ import {minesService, scoreService, commentService} from "../../_api";
 import Field, {fieldInitial, FieldType} from "./Field";
 import GameStateAlert from "./GameStateAlert";
 import Services from "./services/Services";
+import {stringEquals} from "./utils";
 
 const Mines = () => {
   const [field, setField] = useState<FieldType>(fieldInitial);
@@ -28,6 +29,7 @@ const Mines = () => {
       .fetchBoard()
       .then(data => {
         setField(data.data);
+        setScoreSent(stringEquals(field.gameState, 'PLAYING'))
       })
   };
 
@@ -53,7 +55,7 @@ const Mines = () => {
 
   const actualizeStates = (fieldData: FieldType) => {
     setField(fieldData);
-    if(!scoreSent && field?.gameState && ('PLAYING'.localeCompare(field.gameState) === 0)) {
+    if(!scoreSent && field?.gameState && (stringEquals('PLAYING', field.gameState))) {
       setShowAlert(true);
       scoreService.addScore(field.score).then(() => setScoreSent(true));
     }

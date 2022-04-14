@@ -1,7 +1,7 @@
 import axios from "./gamestudio";
 import {GAME_ID, SCORE_URL} from "./constants";
 import {ScoreType} from "../components/mines/services/Score";
-import {formatDate} from "../components/mines/services/utils";
+import {formatDate} from "../components/mines/utils";
 
 const fetchScore = () => axios.get(`${SCORE_URL}/${GAME_ID}`);
 const addScore = (points: number) => {

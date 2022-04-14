@@ -1,7 +1,7 @@
 import axios from "./gamestudio";
 import {COMMENTS_URL, GAME_ID} from "./constants";
 import {CommentType} from "../components/mines/services/Comments";
-import {formatDate} from "../components/mines/services/utils";
+import {formatDate} from "../components/mines/utils";
 
 const fetchComments = () => axios.get(`${COMMENTS_URL}/${GAME_ID}`);
 const addComment = (comment: string) => {

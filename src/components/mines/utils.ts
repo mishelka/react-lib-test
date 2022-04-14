@@ -4,3 +4,8 @@ export const formatDate = (date: Date) => {
   console.log(dateString);
   return dateString;
 }
+
+export const stringEquals = (str1: string|null, str2: string|null) => {
+  return (str1 != null && str2 != null) ?
+    str1.localeCompare(str2) === 0 : true;
+}

@@ -15,7 +15,9 @@
     "react-router-dom": "^6.3.0"
   },
   "alias": {
-    "process": false
+    "process": false,
+    "react": "../node_modules/react",
+    "react-dom": "../node_modules/react-dom"
   },
   "devDependencies": {
     "@types/react": "^16.9.11",
